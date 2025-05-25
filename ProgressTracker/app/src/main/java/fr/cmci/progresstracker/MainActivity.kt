@@ -2,13 +2,14 @@ package fr.cmci.progresstracker
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import fr.cmci.progresstracker.util.PreferenceManager
 import fr.cmci.progresstracker.databinding.ActivityMainBinding
 
@@ -30,6 +31,9 @@ class MainActivity : AppCompatActivity() {
         // Initialiser le PreferenceManager
         preferenceManager = PreferenceManager(this)
 
+        // Configurer la Toolbar
+        setSupportActionBar(binding.toolbar)
+
         // Configurer les insets de fenêtre
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -46,15 +50,40 @@ class MainActivity : AppCompatActivity() {
                 .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
             navController = navHostFragment.navController
 
-            // Configurer le BottomNavigationView avec le NavController
-            // Utiliser NavigationUI au lieu de setupWithNavController
-            NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
-
             Log.d("MainActivity", "Navigation initialisée avec succès")
         } catch (e: Exception) {
             // Gérer l'exception si le fragment de navigation n'est pas trouvé
             Log.e("MainActivity", "Erreur lors de l'initialisation de la navigation", e)
             e.printStackTrace()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflater le menu déroulant
+        menuInflater.inflate(R.menu.dropdown_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Gérer les clics sur les éléments du menu déroulant
+        return when (item.itemId) {
+            R.id.navigation_dashboard -> {
+                navController.navigate(R.id.navigation_dashboard)
+                true
+            }
+            R.id.navigation_entry -> {
+                navController.navigate(R.id.navigation_entry)
+                true
+            }
+            R.id.navigation_importunity -> {
+                navController.navigate(R.id.navigation_importunity)
+                true
+            }
+            R.id.navigation_history -> {
+                navController.navigate(R.id.navigation_history)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

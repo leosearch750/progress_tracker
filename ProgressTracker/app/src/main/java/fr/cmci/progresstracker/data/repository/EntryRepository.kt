@@ -72,6 +72,13 @@ class EntryRepository(
         return christianReadingDao.getReadingForEntry(entryId)
     }
 
+    suspend fun deleteEntry(entryId: Long) {
+        // Supprimer les lectures associées
+        // La suppression en cascade est configurée dans les entités, donc la suppression
+        // de l'entrée principale entraînera automatiquement la suppression des lectures associées
+        dailyEntryDao.deleteEntry(entryId)
+    }
+
     suspend fun getYearToDateProgress(userId: Long): Map<String, Float> {
         val calendar = Calendar.getInstance()
         val currentYear = calendar.get(Calendar.YEAR)

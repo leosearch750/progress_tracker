@@ -23,4 +23,7 @@ interface DailyEntryDao {
 
     @Query("SELECT SUM(psHours) FROM daily_entries WHERE userId = :userId AND date BETWEEN :startDate AND :endDate")
     suspend fun getTotalPsForPeriod(userId: Long, startDate: Date, endDate: Date): Float?
+
+    @Query("DELETE FROM daily_entries WHERE id = :entryId")
+    suspend fun deleteEntry(entryId: Long)
 }

@@ -11,7 +11,8 @@ import fr.cmci.progresstracker.databinding.ItemHistoryEntryBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class HistoryAdapter : ListAdapter<HistoryFragment.HistoryItem, HistoryAdapter.ViewHolder>(HistoryDiffCallback()) {
+class HistoryAdapter(private val onDeleteClick: (Long) -> Unit) :
+    ListAdapter<HistoryFragment.HistoryItem, HistoryAdapter.ViewHolder>(HistoryDiffCallback()) {
 
     private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
@@ -61,6 +62,11 @@ class HistoryAdapter : ListAdapter<HistoryFragment.HistoryItem, HistoryAdapter.V
 
             // PS
             binding.textViewPSEntry.text = "PS: ${entry.psHours}/${entry.psTarget}h"
+
+            // Configurer le bouton de suppression
+            binding.buttonDeleteEntry.setOnClickListener {
+                onDeleteClick(entry.id)
+            }
         }
     }
 
