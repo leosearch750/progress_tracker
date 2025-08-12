@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.entry.DailyEntryFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/textViewEntryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nouvelle entrée"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEntryTitle" />
+
+        <Button
+            android:id="@+id/buttonSelectDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sélectionner une date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
+
+        <!-- RD Section -->
+        <TextView
+            android:id="@+id/textViewRDSection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Rencontres Dynamiques (RD)"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonSelectDate" />
+
+        <EditText
+            android:id="@+id/editTextRDCompleted"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Nombre réalisé"
+            android:inputType="number"
+            app:layout_constraintEnd_toStartOf="@+id/textViewRDSeparator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRDSection" />
+
+        <TextView
+            android:id="@+id/textViewRDSeparator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="/"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextRDCompleted"
+            app:layout_constraintEnd_toStartOf="@+id/editTextRDTarget"
+            app:layout_constraintStart_toEndOf="@+id/editTextRDCompleted"
+            app:layout_constraintTop_toTopOf="@+id/editTextRDCompleted" />
+
+        <EditText
+            android:id="@+id/editTextRDTarget"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Objectif quotidien"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextRDCompleted"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewRDSeparator"
+            app:layout_constraintTop_toTopOf="@+id/editTextRDCompleted" />
+
+        <!-- LB Section -->
+        <TextView
+            android:id="@+id/textViewLBSection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Lecture Biblique (LB)"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextRDCompleted" />
+
+        <EditText
+            android:id="@+id/editTextLBCompleted"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Nombre de chapitres"
+            android:inputType="number"
+            app:layout_constraintEnd_toStartOf="@+id/textViewLBSeparator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLBSection" />
+
+        <TextView
+            android:id="@+id/textViewLBSeparator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="/"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextLBCompleted"
+            app:layout_constraintEnd_toStartOf="@+id/editTextLBTarget"
+            app:layout_constraintStart_toEndOf="@+id/editTextLBCompleted"
+            app:layout_constraintTop_toTopOf="@+id/editTextLBCompleted" />
+
+        <EditText
+            android:id="@+id/editTextLBTarget"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Objectif quotidien"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextLBCompleted"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewLBSeparator"
+            app:layout_constraintTop_toTopOf="@+id/editTextLBCompleted" />
+
+        <EditText
+            android:id="@+id/editTextLBChapters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Chapitres lus (ex: Genèse 1, Exode 2)"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLBCompleted" />
+
+        <!-- LC Section -->
+        <TextView
+            android:id="@+id/textViewLCSection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Littérature Chrétienne (LC)"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLBChapters" />
+
+        <EditText
+            android:id="@+id/editTextLCPages"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Nombre de pages lues"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLCSection" />
+
+        <EditText
+            android:id="@+id/editTextLCBook"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Nom du livre"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLCPages" />
+
+        <!-- PS Section -->
+        <TextView
+            android:id="@+id/textViewPSSection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Prière Seule (PS)"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLCBook" />
+
+        <EditText
+            android:id="@+id/editTextPSHours"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Heures de prière"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toStartOf="@+id/textViewPSSeparator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPSSection" />
+
+        <TextView
+            android:id="@+id/textViewPSSeparator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="/"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextPSHours"
+            app:layout_constraintEnd_toStartOf="@+id/editTextPSTarget"
+            app:layout_constraintStart_toEndOf="@+id/editTextPSHours"
+            app:layout_constraintTop_toTopOf="@+id/editTextPSHours" />
+
+        <EditText
+            android:id="@+id/editTextPSTarget"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Objectif quotidien"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextPSHours"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewPSSeparator"
+            app:layout_constraintTop_toTopOf="@+id/editTextPSHours" />
+
+        <Button
+            android:id="@+id/buttonSaveEntry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Enregistrer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPSHours" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
